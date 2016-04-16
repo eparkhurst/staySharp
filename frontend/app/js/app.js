@@ -12,9 +12,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "views/item.html",
       controller: "MainController"
     })
-    .state('state2', {
-      url: "/state2",
-      templateUrl: "partials/state2.html"
+    .state('checkout', {
+      url: "/checkout",
+      templateUrl: "views/checkout.html"
     })
     .state('state2.list', {
       url: "/list",
