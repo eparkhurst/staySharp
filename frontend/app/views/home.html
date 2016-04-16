@@ -8,7 +8,7 @@
   </select>
 </label>
 <label>Search by Name<input type="text" ng-model="search"></label>
-<button ng-click="checkout">Checkout | Cart:</button>
+<a href="#/checkout" class="btn btn-default"ng-click="checkout">Checkout | Cart: {{numberOfItems}} items</a>
 <div class="panel" ng-repeat="tea in data | filter:search">
   <div class="panel-body">
     <div class="row">
@@ -24,14 +24,14 @@
           </div>
           <div class="col-md-2">
           </div>
-          <div ng-model="quantity" class="col-md-2">
+          <div class="col-md-2">
               <h3>Quantity:</h3>
-                <select>
+                <select ng-model="quantity">
                   <option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
                 </select>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default" ng-click="addToBag">Add to Bag</button>
+            <button class="btn btn-default" ng-click="addToCart(quantity,tea)">Add to Bag</button>
           </div>
         </div>
           <h5>Price: {{tea.price/100 | currency}}</h5>

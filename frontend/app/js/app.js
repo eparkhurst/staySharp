@@ -14,7 +14,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('checkout', {
       url: "/checkout",
-      templateUrl: "views/checkout.html"
+      templateUrl: "views/checkout.html",
+      controller: "checkoutController"
     })
     .state('state2.list', {
       url: "/list",
@@ -24,3 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     });
 });
+
+app.service('cartService', function(){
+    this.cart = []
+})

@@ -1,8 +1,18 @@
-app.controller("MainController", function($scope, $http){
+app.controller("MainController", function($scope, $http, cartService){
   $scope.line="this works"
+  $scope.cart=[]
+  $scope.numberOfItems = 0
   $scope.setCategory=function(category){
     console.log(category);
   }
+  $scope.addToCart = function(quantity, tea){
+    for (var i = 0; i < quantity; i++) {
+      cartService.cart.push(tea);
+    }
+    console.log(cartService.cart);
+    $scope.numberOfItems = cartService.cart.length;
+  }
+
 
   $scope.data = [
       {
@@ -127,4 +137,11 @@ app.controller("MainController", function($scope, $http){
           categories: ["spring", "warm","winter"]
       }
   ]
+})
+
+app.controller("checkoutController", function($scope, cartService){
+  $scope.cart = cartService.cart;
+  $scope.logIt = function(){
+    console.log(cartService.cart);
+  }
 })
