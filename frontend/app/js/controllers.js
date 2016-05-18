@@ -14,9 +14,15 @@ app.controller("MainController", function($scope, $http, cartService){
 
   $scope.addToCart = function(quantity, tea){
     if(!quantity) return
-    cartService.cart.push({tea:tea,quantity:quantity});
-    console.log(cartService.cart);
-    $scope.numberOfItems = calcCart($scope.cart).quantity
+    var index = checkCart($scope.cart, tea);
+    if(index <0 ){
+      cartService.cart.push({tea:tea,quantity:quantity});
+      $scope.numberOfItems = calcCart($scope.cart).quantity
+    }
+    else {
+      cartService.cart[index].quantity = parseInt(cartService.cart[index].quantity) + parseInt(quantity);
+      $scope.numberOfItems = calcCart($scope.cart).quantity
+    }
   }
 
   $http.get('http://localhost:3000/').then(function successCallback(response){
@@ -59,4 +65,11 @@ function calcCart(cart){
     totalCost:totalCost,
     quantity:quantity
   }
+}
+
+function checkCart(myArray, searchTerm) {
+    for(var i = 0, len = myArray.length; i < len; i++) {
+        if (myArray[i].tea === searchTerm) return i;
+    }
+    return -1;
 }
