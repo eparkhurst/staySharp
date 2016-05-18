@@ -25,7 +25,3 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     });
 });
-
-app.service('cartService', function(){
-    this.cart = []
-})

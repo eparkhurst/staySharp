@@ -140,13 +140,17 @@ app.controller("MainController", function($scope, $http, cartService){
 app.controller("checkoutController", function($scope, cartService){
   $scope.cart = cartService.cart;
   $scope.totalCost = calcCost($scope.cart);
-  $scope.logIt = function(){
-    console.log(cartService.cart);
-  }
+  $scope.showQuantity = false;
   $scope.removeItem = function(index){
     cartService.cart.splice(index, 1);
     $scope.totalCost = calcCost($scope.cart);
-    console.log(cartService.cart);
+  }
+  $scope.toggleQuantity = function(){
+    this.tea.showQuantity = !this.tea.showQuantity;
+  }
+  $scope.updateQuantity = function(index, newQuantity){
+    cartService.cart[index].quantity = newQuantity;
+    $scope.totalCost = calcCost($scope.cart);
   }
 })
 
