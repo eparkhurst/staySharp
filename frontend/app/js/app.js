@@ -5,7 +5,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('/', {
       url: "/",
-      templateUrl: "views/home.html"
+      templateUrl: "views/home.html",
+      controller: "MainController"
     })
     .state('item', {
       url: "/item",
@@ -16,12 +17,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: "/checkout",
       templateUrl: "views/checkout.html",
       controller: "checkoutController"
-    })
-    .state('state2.list', {
-      url: "/list",
-      templateUrl: "partials/state2.list.html",
-      controller: function($scope) {
-        $scope.things = ["A", "Set", "Of", "Things"];
-      }
     });
 });
