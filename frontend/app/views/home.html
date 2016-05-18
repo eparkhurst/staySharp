@@ -1,4 +1,4 @@
-<h1>Home!!</h1>
+
 <label>Search by Catagory
   <select name="categories" ng-model="search.categories" ng-init="Hi" ng-click="setCategory(category)">
     <option value="">N/A</option>
@@ -9,7 +9,7 @@
   </select>
 </label>
 <label>Search by Name<input type="text" ng-model="search.name"></label>
-<a href="#/checkout" class="btn btn-default"ng-click="checkout">Checkout | Cart: {{numberOfItems}} items</a>
+<a ng-href="{{checkoutLink}}" class="btn btn-default" ng-click="checkout()"ng-disabled="numberOfItems < 1">Checkout | Cart: {{numberOfItems}} items</a>
 <div class="panel" ng-repeat="tea in data | filter:search:strict">
   <div class="panel-body">
     <div class="row">
@@ -27,7 +27,7 @@
           </div>
           <div class="col-md-2">
               <h3>Quantity:</h3>
-                <select ng-model="quantity">
+                <select ng-model="quantity" value="0">
                   <option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]">{{qty}}</option>
                 </select>
           </div>
