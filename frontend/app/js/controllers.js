@@ -1,4 +1,4 @@
-app.controller("MainController", function($scope, $http, cartService){
+angular.module('staySharp').controller("MainController", function($scope, $http, cartService){
 
   $scope.cart = cartService.cart
   $scope.numberOfItems = calcCart($scope.cart).quantity
@@ -34,7 +34,7 @@ app.controller("MainController", function($scope, $http, cartService){
 })
 
 
-app.controller("checkoutController", function($scope, cartService){
+angular.module('staySharp').controller("checkoutController", function($scope, cartService){
   $scope.cart = cartService.cart;
   $scope.totalCost = calcCart($scope.cart).totalCost;
   $scope.showQuantity = false;

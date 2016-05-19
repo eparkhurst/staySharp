@@ -1,6 +1,5 @@
-var app = angular.module('staySharp', ['ui.router']);
-
-app.config(function($stateProvider, $urlRouterProvider) {
+angular.module('staySharp', ['ui.router'])
+.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
   $stateProvider
     .state('/', {
